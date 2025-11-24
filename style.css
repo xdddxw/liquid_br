@@ -1,0 +1,326 @@
+/* ====== Загальні стилі ====== */
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Roboto, Arial, sans-serif;
+    background: linear-gradient(120deg, #7b2ff7, #5a0fc8, #1a0a40);
+    background-size: 300% 300%;
+    animation: anim-bg 12s ease infinite;
+    color: white;
+}
+
+/* Анімований градієнт */
+@keyframes anim-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Блоки */
+.container, .container-2 {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+}
+
+/* Заголовок */
+.browser-top {
+    background: rgba(255,255,255,0.7);
+    padding: 14px 0 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(6px);
+    border-radius: 0 0 12px 12px;
+}
+
+/* ====== Merchant ====== */
+
+.merchant {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.merchant-icon {
+    width: 38px;
+    height: 38px;
+    background-image: url(1.png);
+    background-size: cover;
+    border-radius: 8px;
+}
+
+
+
+/* ====== Payment Buttons ====== */
+
+.method {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.method:last-child {
+    border-bottom: none;
+}
+
+.pay-btn {
+    margin-top: 18px;
+    width: 100%;
+    padding: 14px;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.pay-btn:hover {
+    background-color: blueviolet;
+    transform: scale(1.05);
+}
+
+/* ====== Powered ====== */
+
+.powered {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ====== Toast-повідомлення ====== */
+
+#toast {
+    position: fixed;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: white;
+    transition: bottom 0.4s ease;
+    z-index: 20000;
+}
+
+#toast.show {
+    bottom: 30px;
+}
+
+/* ====== Fade-in ====== */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade 0.9s ease forwards;
+}
+
+@keyframes fade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== Водяні знаки ====== */
+
+:root {
+    --wm-color1: rgba(255, 0, 150, 0.45);
+    --wm-color2: rgba(0, 255, 255, 0.45);
+}
+
+.watermark {
+    position: fixed;
+    font-size: 22px;
+    font-weight: 800;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 9999;
+    background: linear-gradient(90deg, var(--wm-color1), var(--wm-color2), var(--wm-color1));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wm-shine 6s linear infinite;
+    transform: rotate(30deg);
+}
+
+@keyframes wm-shine {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 300% 0%; }
+}
+
+/* Позиції */
+.wm1  { top: 5%;  left: 5%;  }
+.wm2  { top: 5%;  left: 35%; }
+.wm3  { top: 5%;  left: 65%; }
+.wm4  { top: 20%; left: 15%; }
+.wm5  { top: 20%; left: 45%; }
+.wm6  { top: 20%; left: 75%; }
+.wm7  { top: 35%; left: 5%;  }
+.wm8  { top: 35%; left: 35%; }
+.wm9  { top: 35%; left: 65%; }
+.wm10 { top: 50%; left: 15%; }
+.wm11 { top: 50%; left: 45%; }
+.wm12 { top: 50%; left: 75%; }
+.wm13 { top: 65%; left: 5%;  }
+.wm14 { top: 65%; left: 35%; }
+.wm15 { top: 65%; left: 65%; }
+.wm16 { top: 80%; left: 20%; }
+.wm17 { top: 80%; left: 55%; }
+
+/* ===== АДАПТИВ для телефонів ===== */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .product-img {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* Якщо колонок багато — даємо скрол */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ===== Фішка: підсвічування рядків з тінню ===== */
+#product-table tr {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#product-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Плавний ефект для всіх клітинок */
+#product-table td, #product-table th {
+    transition: all 0.3s ease;
+}
+
+/* ===== Ефект натискання кнопки ===== */
+.pay-btn {
+    transition: all 0.2s ease;
+}
+
+.pay-btn:active {
+    transform: scale(0.95) translateY(2px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 20000;
+}
+
+#toast.show {
+    opacity: 1;
+}
+
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* щоб не заважало клікам */
+    z-index: 0; /* позаду всіх елементів */
+}
+
+
+/* ===== Картки товарів ===== */
+.cards {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 18px 0 5px;
+    text-align: center;
+    background: rgba(0,0,0,0.55);
+    padding: 8px 0;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+/* Анімована картка */
+.card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 16px;
+    border-radius: 14px;
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+
+/* Підстрибування при наведенні */
+.card:hover {
+    background: rgba(255,255,255,0.22);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.45), 0 0 12px rgba(230, 190, 255, 0.4);
+}
+
+/* Текст всередині */
+.card-name {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.card-desc {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.card-price {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+}
